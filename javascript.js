@@ -2,11 +2,14 @@ let play;
 function getComputerChoice(){
     play = Math.random()
     if(play>2/3){
-        return("Rock");
+        return("rock");
     } else if(play>1/3){
-        return("Paper");
+        return("paper");
     } else {
-        return("Scissors");
+        return("scissors");
     }
     
 }
+console.log(getComputerChoice());
+let input = prompt("What is your move?").toLowerCase();
+console.log(input);
