@@ -11,8 +11,10 @@ function getComputerChoice(){
     
 }
 
-let input = prompt("What is your move?").toLowerCase();
-
+let input;
+function getPlayerChoice(){
+    return(prompt("What is your move?").toLowerCase());
+}
 function playRound(playerMove, cpuMove){
     if(playerMove == "rock"){
         if(cpuMove == "rock") return("Draw");
@@ -28,5 +30,28 @@ function playRound(playerMove, cpuMove){
         if(cpuMove == "scissors") return ("Draw");
     }
 }
+let playerScore;
+let cpuScore;
 
-console.log(playRound(input,getComputerChoice()));
+function game(numberOfGames){
+    playerScore = 0;
+    cpuScore = 0;
+
+    for(let i=0; i<numberOfGames; i++){
+        //let p = getPlayerChoice();
+       // let c = getComputerChoice();
+        if(playRound(getPlayerChoice(), getComputerChoice())=="playerWins"){
+            console.log("The player wins this round.");
+            playerScore++;
+        } 
+        if(playRound(getPlayerChoice(), getComputerChoice())=="CPU wins"){
+            console.log("The CPU wins this round.");
+            cpuScore++;
+        }
+    }
+    if(playerScore>cpuScore) console.log("The player wins the whole game "+playerScore+" to "+cpuScore);
+    if(playerScore<cpuScore) console.log("The CPU wins the whole game "+cpuScore+" to "+playerScore);
+    if(playerScore==cpuScore) console.log("The game ends in a draw of "+playerScore+" to "+cpuScore);
+}
+
+game(5);
